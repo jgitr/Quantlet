@@ -1,4 +1,5 @@
 from modules.QUANTLET import QUANTLET
+from modules.jsonize_metainfo import jsonize_all_metainfos
 import os
 
 filename = 'data_file_'
@@ -20,6 +21,9 @@ if not f:
     q.save(name)
 else:
     q = QUANTLET.load('data/' + f[-1])
+
+# Transforms all Metainfo.txt into .JSON
+jsonize_all_metainfos(q)
 
 # Update all existing metafiles in q
 q.update_existing_metafiles()
